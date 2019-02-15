@@ -9,5 +9,5 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-$app = new App\App();
-echo $app->run();
+$app = new IpInformer();
+return $app->takeInformation();
