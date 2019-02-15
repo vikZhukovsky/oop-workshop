@@ -2,7 +2,6 @@
 
 namespace IpInformer;
 
-use GuzzleHttp\Client;
 use IpInformer\DataLoader;
 
 class IpInformer
@@ -11,16 +10,16 @@ class IpInformer
     protected $ip;
     protected $DataLoader;
 
-    public function __construct($dataFormat = 'json', $ip = '', $httpClientParams)
+    public function __construct($dataFormat = 'json', $ip = '')
     {
         $this->dataFormat = $dataFormat;
         $this->ip = $ip;
-        $this->DataLoader = new DataLoader(new Client($httpClientParams));
+        $this->DataLoader = new DataLoader();
     }
 
     public function takeInformation()
     {
-        $this->DataLoader->loadData($this->ip, $this->makeQueryParams($this->dataFormat, $this->ip));
+        return $this->DataLoader->loadData($this->makeQueryParams($this->dataFormat, $this->ip));
     }
 
     protected function makeQueryParams($dataFormat, $ip)

@@ -2,18 +2,22 @@
 
 namespace IpInformer;
 
+use GuzzleHttp\Client;
+
 class DataLoader
 {
     private $httpClient;
+    private $baseUrl = 'http://ip-api.com/';
 
-    public function __construct($httpClient)
+    public function __construct()
     {
-        $this->httpClient = $httpClient;
+        $this->httpClient = new Client(['base_uri' => $this->baseUrl]);
     }
 
-    public function loadData($baseUrl, $queryParams)
+    public function loadData($queryParams)
     {
-        $this->httpClient->get($baseUrl . $queryParams);
+        echo $this->baseUrl . $queryParams;
+        return $this->httpClient->request('GET', $queryParams)->getBody();
     }
 
 }

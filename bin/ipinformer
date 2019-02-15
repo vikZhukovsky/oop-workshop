@@ -9,5 +9,21 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-$app = new IpInformer();
-return $app->takeInformation();
+$doc = <<<DOC
+Ip Geolocation Informer
+Usage:
+  gendiff (-h|--help)
+  gendiff [--format <data format> --ip <ip address>]
+Options:
+  -h --help                     Show this screen
+  --format <data format>        Responded format [default: json]
+  --ip <ip address>             Requested ip address
+DOC;
+
+$args = \Docopt::handle($doc);
+
+$dataFormat = $args["--format"] ?? 'json';
+$ipAddress = $args["--ip"] ?? $_SERVER['REMOTE_ADDR'];
+
+$app = new IpInformer\IpInformer($dataFormat, $ipAddress);
+echo $app->takeInformation();
