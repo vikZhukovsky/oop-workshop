@@ -23,7 +23,7 @@ DOC;
 $args = \Docopt::handle($doc);
 
 $dataFormat = $args["--format"];
-$ipAddress = $args["--ip"] ?? $_SERVER['REMOTE_ADDR'];
+$ipAddress = $args["--ip"];
 
-$app = new IpInformer\IpInformer($dataFormat, $ipAddress);
-echo $app->takeInformation();
+$IpInformer = new IpInformer\IpInformer($dataFormat, $ipAddress);
+echo $IpInformer->loadData();

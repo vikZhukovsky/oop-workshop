@@ -16,7 +16,6 @@ class DataLoader
 
     public function loadData($queryParams)
     {
-        echo $this->baseUrl . $queryParams;
         return $this->httpClient->request('GET', $queryParams)->getBody();
     }
 

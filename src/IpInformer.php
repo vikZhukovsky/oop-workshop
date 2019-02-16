@@ -17,9 +17,11 @@ class IpInformer
         $this->DataLoader = new DataLoader();
     }
 
-    public function takeInformation()
+    public function loadData($dataFormat = null, $ip = null)
     {
-        return $this->DataLoader->loadData($this->makeQueryParams($this->dataFormat, $this->ip));
+        $dataFormat = $dataFormat ?? $this->dataFormat;
+
+        return $this->DataLoader->loadData($this->makeQueryParams($dataFormat ?? $this->dataFormat, $ip ?? $this->ip));
     }
 
     protected function makeQueryParams($dataFormat, $ip)
