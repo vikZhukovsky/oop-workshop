@@ -2,6 +2,8 @@
 
 namespace IpInformer\Tests;
 
+use IpInformer\InterfaceDataLoader;
+
 class HttpLib implements InterfaceDataLoader
 {
     public function loadData($queryParams)

@@ -14,8 +14,8 @@ class IpInformerTest extends TestCase
 
     public function testLoadData()
     {
-        $this->ipInformer = new IpInformer();
         $this->anyDataLoader = new HttpLib();
+        $this->ipInformer = new IpInformer(null, null, $this->anyDataLoader);
 
         $expected = [
             "query" => "24.48.0.1",
@@ -27,7 +27,7 @@ class IpInformerTest extends TestCase
             "city" => "Québec",
         ];
 
-        $this->assertEquals($expected, $this->ipInformer->loadData('', 'json', $this->anyDataLoader));
+        $this->assertEquals($expected, $this->ipInformer->loadData());
     }
 
 }
