@@ -4,7 +4,7 @@ namespace IpInformer;
 
 use GuzzleHttp\Client;
 
-class DataLoader
+class DataLoader implements InterfaceDataLoader
 {
     private $httpClient;
     private $baseUrl = 'http://ip-api.com/';
@@ -18,5 +18,4 @@ class DataLoader
     {
         return $this->httpClient->request('GET', $queryParams)->getBody();
     }
-
 }

@@ -1,3 +1,6 @@
+## Installation
+`composer install`
+
 ## Usage by console
 ````
 Ip Geolocation Informer
