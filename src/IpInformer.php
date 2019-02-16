@@ -10,10 +10,10 @@ class IpInformer
     protected $ip;
     protected $DataLoader;
 
-    public function __construct($dataFormat = 'json', $ip = '')
+    public function __construct($dataFormat = 'json', $ip = null)
     {
         $this->dataFormat = $dataFormat;
-        $this->ip = $ip;
+        $this->ip = $ip ?? $_SERVER['REMOTE_ADDR'];
         $this->DataLoader = new DataLoader();
     }
 
